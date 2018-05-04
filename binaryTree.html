@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>binaryTree排序二叉树原理</title>
+</head>
+<body>
+<!-- 排序二叉树的原理：左边的子节点比父节点的值小，右边的子节点比父节点的值大 -->
+<script type="text/javascript">
+	function BinaryTree(){
+		var Node = function(key) {
+			this.key = key; // 节点
+			this.left = null; // 左边的子节点
+			this.right = null; // 右边的子节点
+		}
+
+		var root = null; // 根节点
+
+		var insertNode = function(node, newNode){
+			if(newNode.key < node.key){
+				if(node.left == null){
+					node.left = newNode;
+				}else{
+					insertNode(node.left, newNode);
+				}
+			}else{
+				if(node.right == null){
+					node.right = newNode;
+				}else{
+					insertNode(node.right, newNode); 
+				}
+			}
+		}
+
+		// 插入节点
+		this.insert = function(key) {
+			var newNode = new Node(key);
+			if(root == null) {
+				root = newNode; // 如果根节点为空，则将新节点插入到根节点中
+			}else{
+				insertNode(root, newNode); // 如果根节点不为空，则向根节点插入新节点
+			}
+		}
+	}
+</script>
+</body>
+</html>
